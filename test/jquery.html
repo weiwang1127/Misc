@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
+    <script src="jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.min.css">
+   <!-- <script src="jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+    <script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.11.4.custom/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.11.4.custom/jquery-ui.structure.min.css">
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.11.4.custom/jquery-ui.theme.min.css">-->
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
+</head>
+<!--<body>
+<p>adsfad</p>
+<button>abc</button>
+<script>
+    $("button").click(function(e){
+        return ("fadfadsf:"+ e.pageX+","+ e.pageY)
+    });
+    $("button").click(function(e){
+        $("p").html(e.result)
+    })
+</script>
+</body>-->
+<style>
+    #accordion1 div,#accordion div{
+        padding:0;
+        line-height: 1.5em;
+        height: 1.5em;
+    }
+    #droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+    #draggable, #draggable-nonvalid { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+
+
+   /* #a{width:100px;height:100px;border:1px solid #2b81af;padding:12px; margin:20px;}*/
+    #p{width: 150px;height:200px;border:1px solid #bcd5e6;padding:12px;}
+    /*  div{
+          width: 200px;
+          height:200px;
+          background: #cccccc;
+      }*/
+   /* .big-blue{
+          width: 400px;
+          height:400px;
+          background:#0000ff;
+      }*/
+    .aaa{
+        position: relative;
+        background:#ff6200;
+        color:#fff;
+z-index: 1000;
+    }
+    #sortable,#a { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+    #sortable li,#a li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+    #sortable li span { position: absolute; margin-left: -1.3em; }
+    li{
+        list-style: none;
+    }
+
+    #resizable { width: 150px; height: 150px; padding: 0.5em; }
+    #resizable h3 { text-align: center; margin: 0; }
+    .ui-resizable-helper { border: 1px dotted gray; }
+
+    body { font-size: 62.5%; }
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+</style>
+<body>
+<!--<div id="dialog" title="Window title">
+    <p>1Content of the dialog box</p>
+</div>-->
+ <!--<div id="tabs">
+    <ul>
+        <li><a href="#tabs1">tabs1</a></li>
+        <li><a href="#tabs2">tabs2</a></li>
+    </ul>
+    <div id="tabs1">
+        <div id="accordion">
+            <h1><a>1Menu 1</a></h1>
+            <div>1muen contents 1</div>
+            <h1><a>1Menu 2</a></h1>
+            <div>1muen contents 2</div>
+            <h1><a>1Menu 3</a></h1>
+            <div>1muen contents 3</div>
+        </div>
+    </div>
+    <div id="tabs2">
+        <div id="dialog2" title="Window title">
+            <p>2Content of the dialog box</p>
+        </div>
+        <div id="accordion1">
+            <h1><a>2Menu 1</a></h1>
+            <div>2muen contents 1</div>
+            <h1><a>2Menu 2</a></h1>
+            <div>2muen contents 2</div>
+            <h1><a>2Menu 3</a></h1>
+            <div>2muen contents 3</div>
+        </div>
+    </div>
+     <div id="dialog1" title="Window title">
+         <p>3Content of the dialog box</p>
+     </div>
+ </div>
+<span id="abc">abc</span>
+<div id="result"> </div>-->
+<!--<div id="a" class="connectedSortable" style="width:300px;margin-bottom: 100px;float: left">
+   &lt;!&ndash; <div style="background:#2b81af 50% top repeat-x;margin-bottom: 12px;text-align:center;margin-top:25px;padding:0">
+        <div class="sideAdv">
+            <a target="_blank" href="http://crm2.qq.com/page/portalpage/wpa.php?uin=4008882660&amp;f=1&amp;ty=1&amp;aty=0&amp;a=&amp;from=6">
+                <img src="https://static.fxbtg-bank.com/cn/images/base/onlineClient.jpg" style="width: 100%">
+            </a>
+            <a target="_blank" href="/About/ContactUs.html">
+                <img src="https://static.fxbtg-bank.com/cn/images/base/contactUs.png"style="width: 100%">
+            </a>
+            <a target="_blank" href="/consulting/index">
+                <img src="https://static.fxbtg-bank.com/cn/images/base/SubmitAdvice.png"style="width: 100%">
+            </a>
+        </div>
+    </div>&ndash;&gt;
+    <p style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;line-height: 2em;padding-left: 12px;font-size: 15px;">日照香炉生紫烟，</p>
+    <p style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;line-height: 2em;padding-left: 12px;font-size: 15px;">疑是地上霜。</p>
+    <p style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;line-height: 2em;padding-left: 12px;font-size: 15px;">疑是银河落九天。</p>
+    <p style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;line-height: 2em;padding-left: 12px;font-size: 15px;">举头望明月，</p>
+&lt;!&ndash;    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">2222222</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">ffffffffff</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">afffffffaaaa</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">555555555555</li>&ndash;&gt;
+</div>-->
+<ul id="a" class="connectedSortable" style="width:300px;margin-bottom: 100px;float: left">
+    <!-- <div style="background:#2b81af 50% top repeat-x;margin-bottom: 12px;text-align:center;margin-top:25px;padding:0">
+         <div class="sideAdv">
+             <a target="_blank" href="http://crm2.qq.com/page/portalpage/wpa.php?uin=4008882660&amp;f=1&amp;ty=1&amp;aty=0&amp;a=&amp;from=6">
+                 <img src="https://static.fxbtg-bank.com/cn/images/base/onlineClient.jpg" style="width: 100%">
+             </a>
+             <a target="_blank" href="/About/ContactUs.html">
+                 <img src="https://static.fxbtg-bank.com/cn/images/base/contactUs.png"style="width: 100%">
+             </a>
+             <a target="_blank" href="/consulting/index">
+                 <img src="https://static.fxbtg-bank.com/cn/images/base/SubmitAdvice.png"style="width: 100%">
+             </a>
+         </div>
+     </div>-->
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;">日照香炉生紫烟，</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;">疑是地上霜。</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;">疑是银河落九天。</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;">举头望明月，</li>
+    <!--    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">2222222</li>
+        <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">ffffffffff</li>
+        <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">afffffffaaaa</li>
+        <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">555555555555</li>-->
+</ul>
+<ul id="sortable" class="connectedSortable" style="width:300px; float: right">
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">遥看瀑布挂前川。</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">床前明月光，</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">飞流直下三千尺</li>
+    <li style="background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x">低头思故乡。</li>
+</ul>
+
+
+
+
+<div class="ui-helper-clearfix"></div>
+<div>
+    <div id="c" class="ui-widget-content"  style="width: 100px;">
+        <p>afdsfasdfasd</p>
+    </div>
+
+    <div id="p" class="ui-widget-header">
+        <p>1213123124</p>
+    </div>
+</div>
+
+<div id="resizable" class="ui-widget-content"style="margin-top:50px;">
+    <h3 class="ui-widget-header">动画</h3>
+</div>
+<div style="float: right;"><span>日期:</span><input type="text" id="date" ></div>
+<script>
+
+    $(function() {
+        var name = $( "#name" ),
+                email = $( "#email" ),
+                password = $( "#password" ),
+                allFields = $( [] ).add( name ).add( email ).add( password ),
+                tips = $( ".validateTips" );
+
+        function updateTips( t ) {
+            tips
+                    .text( t )
+                    .addClass( "ui-state-highlight" );
+            setTimeout(function() {
+                tips.removeClass( "ui-state-highlight", 1500 );
+            }, 500 );
+        }
+
+        function checkLength( o, n, min, max ) {
+            if ( o.val().length > max || o.val().length < min ) {
+                o.addClass( "ui-state-error" );
+                updateTips( "" + n + " 的长度必须在 " +
+                min + " 和 " + max + " 之间。" );
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function checkRegexp( o, regexp, n ) {
+            if ( !( regexp.test( o.val() ) ) ) {
+                o.addClass( "ui-state-error" );
+                updateTips( n );
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        $( "#dialog-form" ).dialog({
+            autoOpen: false,
+            height: 300,
+            width: 350,
+            modal: true,
+            buttons: {
+                "创建一个帐户": function() {
+                    var bValid = true;
+                    allFields.removeClass( "ui-state-error" );
+
+                    bValid = bValid && checkLength( name, "username", 3, 16 );
+                    bValid = bValid && checkLength( email, "email", 6, 80 );
+                    bValid = bValid && checkLength( password, "password", 5, 16 );
+                    bValid = bValid && checkRegexp( name, /^[a-z]([0-9a-z_])+$/i, "用户名必须由 a-z、0-9、下划线组成，且必须以字母开头。" );
+                    bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com" );
+                    bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "密码字段只允许： a-z 0-9" );
+
+                    if ( bValid ) {
+                        $( "#users tbody" ).append( "<tr>" +
+                        "<td>" + name.val() + "</td>" +
+                        "<td>" + email.val() + "</td>" +
+                        "<td>" + password.val() + "</td>" +
+                        "</tr>" );
+                        $( this ).dialog( "close" );
+                    }
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            },
+            close: function() {
+                allFields.val( "" ).removeClass( "ui-state-error" );
+            }
+        });
+
+        $( "#create-user" )
+                .button()
+                .click(function() {
+                    $( "#dialog-form" ).dialog( "open" );
+                });
+    });
+
+
+
+
+
+
+
+    ///////////////////////////
+
+    $(function() {
+        $( "#resizable" ).resizable({
+            animate: true
+        });
+        $("#date").datepicker();
+    });
+
+    $(function() {
+        $( "#sortable,#a" ).sortable({
+            connectWith:".connectedSortable"
+        }).disableSelection();
+    });
+
+    $(function(){
+       // $("#p").sortable();
+        $("#c").draggable();
+        $("#p").droppable({
+            accept: "#c",
+            drop:function(event,ui){
+                //var text = $("#a").find("p").text();
+                //$("#b").appendTo("#c");
+                /*$("<li style='background:#eee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x'>"+text+"</li>").appendTo("#p");*/
+                $(this).addClass("ui-state-highlight")
+                       .find("p")
+                        .html("fsdfsf");
+            },
+            out:function(event,ui){
+                $(this).removeClass("ui-state-highlight")
+                        .find("p")
+                        .html("sssssssssssseeeeee")
+            }
+        });
+    });
+
+    /*$(function() {
+        $( "#draggable" ).draggable({ revert: "valid" });
+        $( "#draggable2" ).draggable({ revert: "invalid" });
+
+        $( "#droppable" ).droppable({
+            activeClass: "ui-state-default",
+            hoverClass: "ui-state-hover",
+            drop: function( event, ui ) {
+                $( this )
+                        .addClass( "ui-state-highlight" )
+                        .find( "p" )
+                        .html( "已放置！" );
+            }
+        });
+    });*/
+
+
+/*    $(function() {
+        $( "#draggable, #draggable-nonvalid" ).draggable();
+        $( "#droppable" ).droppable({
+            accept: "#draggable,#a",
+            activeClass: "ui-state-active",
+            hoverClass: "ui-state-hover",
+            drop: function( event, ui ) {
+                $( this )
+                        .addClass( "ui-state-highlight" )
+                        .find( "p" )
+                        .html( "Dropped!" );
+            }
+        });
+    });*/
+</script>
+
+<!--<div id="draggable-nonvalid" class="ui-widget-content">
+    <p>我是不能被放置的 <d></d>raggable</p>
+</div>
+
+<div id="draggable" class="ui-widget-content">
+    <p>请拖拽我到目标</p>
+</div>
+
+<div id="droppable" class="ui-widget-header">
+    <p>accept: '#draggable'</p>
+</div>
+
+<div></div>-->
+ <script type="text/javascript">
+    /*     $("#tabs").tabs({
+             fx : {opacity : "toggle"},
+             collapsible: true
+         }).tabs('add',"#tabs3","tabs3");
+         $("<i>aaaaaaaaaaaaaaa</i>").appendTo("#tabs3");
+     $("#accordion").accordion();
+         $("#accordion1").accordion().accordion("activate",2);
+     $("#dialog,#dialog1,#dialog2").dialog();
+     $("#dialog").dialog({
+         title:"zheshifhish"
+     });
+     $("#dialog1").dialog({
+         hide : "drop"
+     });
+     $("#abc").button({
+         icons:{secondary : "ui-icon-volume-off"}
+     }).click(function(event){
+         var volume = $(this).button("option","icons").secondary == "ui-icon-volume-off" ? false : true;
+         if(volume){
+             $(this).button("option","label","abc");
+             $(this).button("option","icons",{secondary:"ui-icon-volume-off"})
+         }else{
+             $(this).button("option","label","cba");
+             $(this).button("option","icons",{secondary:"ui-icon-volume-on"})
+         }
+     })*/
+    $( "div" ).click(function() {
+        $( this ).addClass( "big-blue", 1000, "easeOutBounce" );
+    });
+
+
+
+         $.widget( "custom.superDialog", $.ui.dialog, {
+             open: function() {
+                 console.log( "open" );
+
+                 // Invoke the parent widget's open().
+                 return this._super();
+             }
+         });
+         $("<div>").superDialog();
+
+ </script>
+
+<div id="dialog-form" title="创建新用户">
+    <p class="validateTips">所有的表单字段都是必填的。</p>
+
+    <form>
+        <fieldset>
+            <label for="name">名字</label>
+            <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+            <label for="email">邮箱</label>
+            <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
+            <label for="password">密码</label>
+            <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+        </fieldset>
+    </form>
+</div>
+
+
+<div id="users-contain" class="ui-widget">
+    <h1>已有的用户：</h1>
+    <table id="users" class="ui-widget ui-widget-content">
+        <thead>
+        <tr class="ui-widget-header ">
+            <th>名字</th>
+            <th>邮箱</th>
+            <th>密码</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>John Doe</td>
+            <td>john.doe@example.com</td>
+            <td>johndoe1</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<button id="create-user">创建新用户</button>
+
+</body>
+</html>
+
+
+
+<div class="sideAdv" style="margin-top: 56px;">
+    <a target="_blank" href="http://crm2.qq.com/page/portalpage/wpa.php?uin=4008882660&amp;f=1&amp;ty=1&amp;aty=0&amp;a=&amp;from=6">
+        <img src="https://static.fxbtg-bank.com/cn/images/base/onlineClient.jpg" style="width: 100%;">
+    </a>
+    <a target="_blank" href="/About/ContactUs.html">
+        <img src="https://static.fxbtg-bank.com/cn/images/base/contactUs.png" style="width: 100%;">
+    </a>
+    <a target="_blank" href="/consulting/index">
+        <img src="https://static.fxbtg-bank.com/cn/images/base/SubmitAdvice.png" style="width: 100%;">
+    </a>
+</div>

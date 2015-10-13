@@ -1,0 +1,753 @@
+@{
+ViewBag.Title = "FXBTG中文官网|全球最佳在线外汇、贵金属交易平台|大旗金融";
+Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Author" content="FXBTG fxbtg-bank.com" />
+    <meta property="qc:admins" content="35725237776602475216363757" />
+    <meta name="Copyright" content="fxbtg-bank.com 版权所有" />
+    <meta name="keywords" content="外汇交易平台,贵金属投资,黄金开户,外汇开户,外汇代理,IB代理,MT4下载,FXBTG,大旗金融" />
+    <meta name="description" content="FXBTG-全球最佳外汇交易平台，新西兰FSP顶级金融机构监管, 点差低至0,开户赠金, 400:1自由杠杆,最优IB经纪人政策,免费电话4008882660,5×24小时提供外汇、黄金、股指多种产品交易指导" />
+    <script type="text/javascript">
+        function isphone() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+            }
+            if (flag == false) {
+                location.href = 'http://m.fxbtg-bank.com/';
+            }
+        }
+        isphone();
+    </script>
+    <link href="http://static.fxbtg-bank.com/CN/Styles/base.css" rel="stylesheet" />
+    <link href="http://static.fxbtg-bank.com/CN/Styles/reg/bootstrap.css" rel="stylesheet" />
+    <link href="http://static.fxbtg-bank.com/CN/Styles/layout.css?Ver=@DateTime.Now.Ticks" rel="stylesheet" />
+    <link href="http://static.fxbtg-bank.com/CN/Styles/news.css" rel="stylesheet" />
+    <link href="http://static.fxbtg-bank.com/CN/Styles/reg/RegLogfooter.css" rel="stylesheet" />
+    <link href="http://static.fxbtg-bank.com/CN/commponet/Video/video-js.css" rel="stylesheet" />
+
+    <script src="http://static.fxbtg-bank.com/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="http://static.fxbtg-bank.com/Scripts/bootstrap.min.js"></script>
+    <script src="http://static.fxbtg-bank.com/Scripts/jquery.slides.min.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+
+    <link href="http://static.fxbtg-bank.com/CN/Styles/Home/Index.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <style>
+        .vjs-control-bar{display:none;}
+    </style>
+
+    <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <link href="http://static.fxbtg-bank.com/CN/Styles/News/ieBase.css" rel="stylesheet" />
+    <link href="http://static.fxbtg-bank.com/CN/Styles/Home/indexIe.css" rel="stylesheet" />
+    <script src="http://static.fxbtg-bank.com/CN/Scripts/newsIe.js"></script>
+    <![endif]-->
+    <!--[if lt IE 7]>
+    <link href="https://static.fxbtg-bank.com/CN/Styles/reg/passWordFooter.css" rel="stylesheet" />
+    <link href="https://static.fxbtg-bank.com/CN/Styles/ie6Browser.css" rel="stylesheet" />
+
+    <![endif]-->
+
+</head>
+<body>
+@Html.Partial("~/Views/Commponet/NewsHeader.cshtml")
+
+<div id="video">
+    <div id="silde">
+        <div>
+            <a href="http://www.fxbtg-bank.com/Market/Active/55" target="_blank" class="ActiveBanner">
+                <img src="http://static.fxbtg-bank.com/CN/Images/index_cnh300.jpg" style="width: 100%;"/></a>
+        </div>
+        <div style="display:none;">
+            <a href="http://www.fxbtg-bank.com/Service/ProductStockTrading.html" target="_blank" class="ActiveBanner">
+                <img src="http://static.fxbtg-bank.com/CN/Images/index_stock300.jpg" style="width: 100%;"/></a>
+        </div>
+        <span class="leftArrow slidesjs-previous slidesjs-navigation">left</span>
+        <span class="rightArrow slidesjs-next slidesjs-navigation">right</span>
+    </div>
+    <a class="trueBtn openBtn" href="http://portal.fxbtg-bank.com/Account/RegisterStepOne"><span>开设模拟账户</span></a><a class="falseBtn openBtn" href="http://portal.fxbtg-bank.com/Account/RegisterStepOne"><span>开设真实账户</span></a>
+</div>
+<ul style="display: none;" id="circleActive">
+    <li class="selected"></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    $(function () {
+        $('#silde').slidesjs({
+            navigation: {
+                active: true,
+                effect: "fade"
+            },
+            pagination: {
+                active: false
+            },
+            play: {
+                active: true,
+                auto: true,
+                effect: "fade"
+            }
+        });
+    });
+    var timer = null;
+    // 开始循环
+    function setTimer() {
+        timer = setInterval(function () {
+            var newUl1Left = parseInt(div1.css("left")) - 1;
+            //alert(newUl1Left);
+            var newUl2Left = parseInt(div2.css("left")) - 1;
+            if (newUl1Left == -ulWidth) {
+                newUl1Left = ulWidth;
+            }
+
+            if (newUl2Left == -ulWidth) {
+                newUl2Left = ulWidth;
+            }
+            div1.css("left", newUl1Left);
+            div2.css("left", newUl2Left);
+
+        }, 15);
+
+    }
+
+
+    var div1;
+    var div2;
+    var isFirst = true; // 第一次加载完成后初始化轮播信息
+
+    $(function () {
+
+        var tempData = [];
+        var j = 0;
+        var myfunc = function () {
+
+
+            $.get("https://v.fxbtg-bank.com/api/Default/GetIndexRealTimeRate", function (data) {
+                $("#list0 .first").empty();
+
+                for (var i = 0; i < data.length; i++) {
+                    $("#list0 .first").append('<li class="quote">' + '<span class="market">' + data[i].Currency + '</span>' + '<div class="ticker-digits down">' + '<span>' + data[i].buy + '</span>' + '/' + '<span>' + data[i].sell + '</span>' + '</div>' + ' <div class="change">' + '<span class="hl-digits ">' + data[i].MaxValue + '</span>' + '</div>' + '<div class="change">' + '<span class="hl-digits">' + data[i].MinValue + ' </span>' + '</div>' + '</li>');
+                }
+
+
+
+
+                tempData = data;
+
+                if (isFirst) {
+                    div1 = $("#div1");
+                    div2 = $("#div2");
+                    ulWidth = $("#ul1 li").length * $("#ul1 li").width();
+                    div1.css("left", "0");
+                    div2.css("left", ulWidth);
+
+                    div1.width(ulWidth);
+                    div2.width(ulWidth);
+
+                    setTimer();
+                    $("#list0").hover(function () {
+                        clearInterval(timer);
+                    }, function () {
+                        setTimer();
+                    });
+                    isFirst = false;
+                }
+
+
+            });
+
+        }
+
+        myfunc();
+        setInterval(myfunc, 3000);
+
+        $.getJSON("/api/default/GetAnalysVidio", {}, function (ret) {
+            if (ret) {
+                var address = ret.VideoAddress;
+                $("#AnalysVidio").html('<embed src="http://static.youku.com/v1.0.0318/v/swf/loader.swf?isAutoPlay=false&amp;VideoIDS=' + address + '" wmode="transparent" width="100%" height="500">');
+            }
+        });
+
+    });
+</script>
+
+<div id="list0" style="position: relative;">
+    <div id="div1" style="position: absolute;">
+        <ul id="ul1" class="first">
+            @* <li class="quote">
+            <span class="market">GOLD</span>
+            <div class="ticker-digits up"><span>1304.67</span>/<span>1304.18</span></div>
+            <div class="change"><span class="hl-digits ">1338.64</span><span class="hl-label">high</span></div>
+            <div class="change"><span class="hl-digits">1338.22 </span><span class="hl-label">low</span></div>
+        </li> *@
+        </ul>
+
+    </div>
+    <div id="div2" style="position: absolute;">
+        <ul id="ul2" class="first"></ul>
+    </div>
+</div>
+@*    <div id="product">
+    <h1>产品</h1>
+    <div id="circle">
+        <div><h1>Currency</h1></div>
+        <div><h1>TradingProducts</h1></div>
+        <div class="active"><h1>Product</h1></div>
+        <div><h1>CFDs</h1></div>
+        <div><h1>Equity Index</h1></div>
+        <div><h1>Assets</h1></div>
+    </div>
+</div>*@
+@*<h1 class="productNav">产品</h1>*@
+@*    <div id="product">
+    <div class="circle" style="display: none;"></div>
+
+    <img src="http://static.fxbtg-bank.com/CN/Images/Index/ProductBg.png" usemap="#map" />
+    <map name="map" id="map">
+        <area shape="circle" coords="77,208,67" href="#" alt="货币对">
+        <area shape="circle" coords="277,67,66" href="#" alt="交易产品">
+        <area shape="circle" coords="672,68,63" href="#" alt="差价合约">
+        <area shape="circle" coords="877,158,67" href="#" alt="股票指数">
+        <area shape="circle" coords="712,275,63" href="#" alt="其他资产">
+    </map>
+    <div id="plane">
+        <div><i></i><span></span></div>
+        <div><i></i><span></span></div>
+        <div><i></i><span></span></div>
+        <div><i></i><span></span></div>
+        <div><i></i><span></span></div>
+    </div>
+</div>*@
+<div id="list1">
+    <ul>
+        <li class="first">
+            <i>外汇</i>
+            <h2>外汇</h2>
+            <p>
+                外汇交易是世界上流动性最强的金融市场。FXBTG金融集团提供的外汇交易可以做60种以上的货币对，包括主要货币对和次级货币对，交易时间为每周5天，每天24小时。
+
+            </p>
+            <p>@Html.ActionLink("更多", "../Service/ProductFX.html")</p>
+        </li>
+        <li class="second">
+            <i>贵金属</i>
+            <h2>贵金属</h2>
+            <p>FXBTG金融集团提供贵金属黄金，白银交易，市场上最好的点差，无额外的货币风险。贵金属交易零佣金，双向买卖，保证金比例仅需要1%。周一至周五，全天24小时均可交易。</p>
+            <p>@Html.ActionLink("更多", "../Service/ProductMetails.html")</p>
+        </li>
+        <li class="third">
+            <i>股指</i>
+            <h2>股指</h2>
+            <p>在FXBTG金融交易的股指是差价合约交易，简称CFD，属保证金交易的一种，泛指不涉及实物商品或证券的交换、仅以结算价与合约价的差额作现金结算的交易方式。</p>
+            <p>@Html.ActionLink("更多", "../Service/ProductOil.html")</p>
+        </li>
+        <li class="four">
+            <i>原油</i>
+            <h2>原油</h2>
+            <p>原油期货是最重要的石油期货品种，石油/汽油产品是快速增长的市场，FXBTG金融提供的石油合约定价透明，大幅度流动性以及易于获得产业信息，保证金比例仅有1%，24小时报价。</p>
+            <p>@Html.ActionLink("更多", "../Service/ProductStockTrading.html")</p>
+        </li>
+    </ul>
+</div>
+
+
+<div class="clear"></div>
+<section id="slideBlock">
+    <ul id="lastBlockCtrl">
+        <li class="active safe"><i></i><span>安全</span></li>
+        <li class="advantage"><i></i><span>优势</span></li>
+        <li class="promise"><i></i><span>承诺</span></li>
+        <li class="honor"><i></i><span>荣誉奖项</span></li>
+    </ul>
+
+    <div id="describe">
+        <div class="describeList safe" id="regulation">
+            <h1>安全</h1>
+            <p class="con">选择可信赖的合作伙伴,FXBTG作为新西兰金融纠纷调解处FDR认证成员，所有客户交易均获20万新西兰元的资金保障，并与全球顶级银行合作，所以客户存放在FXBTG的资金绝对安全可靠。</p>
+            <div class="blockList">
+                <div class="icon pay">
+
+
+                    <a class="visa"></a>
+                    <a class="cft">财付通</a>
+                    <a class="uniobPay">银联</a>
+                </div>
+                <div class="icon">
+                    <div class="first">
+                        <a class="Geo"></a>
+                        <a class="leverate"></a>
+                        <a class="HsbC"></a>
+                        <a class="FSP"></a>
+                    </div>
+                    <div class="second">
+
+                        <a class="goldMan"></a>
+                        <a class="bank">渣打银行</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="describeList advantage" style="display: none;">
+            <h1>优势</h1>
+            <ul class="list">
+                <li><i></i><span>24小时出金</span></li>
+                <li><i></i><span>多重下单方式</span></li>
+                <li><i></i><span>出金免手续费</span></li>
+                <li><i></i><span>下单速度快</span></li>
+                <li><i></i><span>交易大师行情分析</span></li>
+                <li><i></i><span>不滑点</span></li>
+                <li><i></i><span>0点差起</span></li>
+                <li><i></i><span>手机、网页、pc端交易软件</span></li>
+                <li><i></i><span>微信自助查询</span></li>
+            </ul>
+        </div>
+        <div class="describeList promise" style="display: none;">
+            <h1>承诺</h1>
+            <p class="navTitle">承诺人为滑点罚十倍 </p>
+            <p class="con">
+                任何商业模式如果失去了交易的公平，我们宁愿放弃哪怕是来之不易的成功；
+                选择FXBTG大旗金融，就是选择了安全公正的交易伙伴。
+            </p>
+        </div>
+        <div class="describeList honor" style="display: none;">
+            <h1>荣誉奖项</h1>
+            <p class="navTitle">13年内共计获得45次荣誉奖项 </p>
+            <p class="con">FXBTG大旗金融致力于为零售和机构客户提供业内首屈一指的产品和服务，FXBTG卓越的产品和服务以及持续不断的创新和投入屡次获得多个国际授奖机构的认可，13年来我们共获得了45次荣誉奖项。</p>
+            <a class="more" href="/About/Rewards.html">查看更多</a>
+        </div>
+    </div>
+    <ul id="lastSlider">
+        <li>
+            <div class="safe">
+                <img src="http://static.fxbtg-bank.com/CN/Images/Index/safePic.jpg" />
+            </div>
+        </li>
+    </ul>
+</section>
+
+@*    <section id="slideBlock">
+
+    <div id="describe">
+        <div class="describeList safe" id="regulation">
+
+            <h1>安全</h1>
+            <p class="con">选择可信赖的合作伙伴,FXBTG作为新西兰金融纠纷调解处FDR认证成员，所有客户交易均获20万新西兰元的资金保障，并与全球顶级银行合作，所以客户存放在FXBTG的资金绝对安全可靠。</p>
+            <div class="blockList">
+                <div class="icon pay">
+
+
+                    <a class="visa"></a>
+                    <a class="cft">财付通</a>
+                    <a class="uniobPay">银联</a>
+                </div>
+                <div class="icon">
+                    <div class="first">
+                        <a class="Geo"></a>
+                        <a class="leverate"></a>
+                        <a class="HsbC"></a>
+                        <a class="FSP"></a>
+                    </div>
+                    <div class="second">
+
+                        <a class="goldMan"></a>
+                        <a class="bank">渣打银行</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="describeList advantage">
+
+            <h1>优势</h1>
+            <ul class="list">
+                <li><i></i><span>24小时出金</span></li>
+                <li><i></i><span>多重下单方式</span></li>
+                <li><i></i><span>出金免手续费</span></li>
+                <li><i></i><span>下单速度快</span></li>
+                <li><i></i><span>交易大师行情分析</span></li>
+                <li><i></i><span>不滑点</span></li>
+                <li><i></i><span>0点差起</span></li>
+                <li><i></i><span>手机、网页、pc端交易软件</span></li>
+                <li><i></i><span>微信自助查询</span></li>
+            </ul>
+        </div>
+        <div class="describeList promise">
+
+            <h1>承诺</h1>
+            <p class="navTitle">承诺滑点罚十倍 </p>
+            <p class="con">
+                任何商业模式如果失去了交易的公平，我们宁愿放弃哪怕是来之不易的成功；
+                选择FXBTG大旗金融，就是选择了安全公正的交易伙伴。
+            </p>
+        </div>
+        <div class="describeList honor">
+
+            <h1>荣誉奖项</h1>
+            <p class="navTitle">12年内共计获得45次荣誉奖项 </p>
+            <p class="con">FXBTG大旗金融致力于为零售和机构客户提供业内首屈一指的产品和服务，FXBTG卓越的产品和服务以及持续不断的创新和投入屡次获得多个国际授奖机构的认可，12年来我们共获得了45次荣誉奖项。</p>
+            <a class="more" href="/About/Company-Honor.html">查看更多</a>
+        </div>
+    </div>
+
+
+    <div id="lastSlider">
+
+        <div class="safe">
+            <img src="http://static.fxbtg-bank.com/CN/Images/Index/safePic.jpg">
+        </div>
+        <div class="advantagePic">
+            <img src="http://static.fxbtg-bank.com/CN/Images/Index/advantagePic.jpg" />
+        </div>
+        <div class="promisePic">
+            <img src="http://static.fxbtg-bank.com/CN/Images/Index/promisePic.jpg" />
+        </div>
+        <div class="honorPic">
+            <img src="http://static.fxbtg-bank.com/CN/Images/Index/honor.jpg" />
+        </div>
+
+    </div>  </section>*@
+
+
+
+
+<div class="clear"></div>
+<div id="tradeAccount">
+    <div class="container AccountManage Conlist">
+        <h1>账户类型</h1>
+        <p class="info">四种账户类型，总有一类型适合您；最低入金300美金，最低点差0点差。</p>
+        <div class="row">
+            @{
+            var user = PortalHelper.LoginUser;
+            string minTitle = "微型账户", standardTitle = "标准账户", vipTitle = "VIP账户", specialtyTitle = "专业账户";
+            AccountInfo mineAccount = null, standardAccount = null, vipAccount = null, specialtyAccount = null;
+
+            if (user != null && user.ID > 0)
+            {
+            var accountList = (List<AccountInfo>)ViewBag.Mt4List;
+            if (accountList != null)
+            {
+            mineAccount = accountList.FirstOrDefault(m => m.AccountType == FXBTG.Enums.AccountType.Mini);
+            minTitle = mineAccount == null ? "微型账户" : string.Format("微型账户-{0}", mineAccount.MT4ID);
+
+            standardAccount = accountList.FirstOrDefault(m => m.AccountType == FXBTG.Enums.AccountType.Standard);
+            standardTitle = standardAccount == null ? "标准账户" : string.Format("标准账户-{0}", standardAccount.MT4ID);
+
+            vipAccount = accountList.FirstOrDefault(m => m.AccountType == FXBTG.Enums.AccountType.Vip);
+            vipTitle = vipAccount == null ? "VIP账户" : string.Format("VIP账户-{0}", vipAccount.MT4ID);
+
+            specialtyAccount = accountList.FirstOrDefault(m => m.AccountType == FXBTG.Enums.AccountType.STP);
+            specialtyTitle = specialtyAccount == null ? "专业账户" : string.Format("专业账户-{0}", specialtyAccount.MT4ID);
+            }
+            }
+
+            <div class="trAccountList">
+                <div class="thumbnail">
+                    <h2><a href="/Service/MiniAccount.html" target="_blank">@minTitle</a></h2>
+                    <div class="caption">
+                        @if (mineAccount != null)
+                        {
+                        <section class="accountBalance ">
+                            <h3>$ @mineAccount.EnableBalance</h3>
+                            <p>账户余额</p>
+
+                        </section>
+                        }
+                        else
+                        {
+                        <section class="open">
+
+                            <h3>$300</h3>
+                            <p>最少入金</p>
+                        </section>
+                        }
+                        <section class="detail">
+                            <p>可交易10标准手/单</p>
+                            <p>变量0.01</p>
+                            <p>点差2.4点</p>
+                            <p>外汇、贵金属</p>
+                            <p>杠杆最高1:400</p>
+                        </section>
+                        @if (mineAccount != null)
+                        {
+                        <div class="navBlock">
+                            <ul class="nav">
+                                <li class="addFunds"><a href="/Deposit/Index/@mineAccount.MT4ID">入金</a></li>
+                                <li><a href="/Office/GetTranRecord/@mineAccount.MT4ID">交易记录</a></li>
+                                <li><span>|</span></li>
+                                @if (PortalMT4.IsMt4CanChange(mineAccount.MT4ID))
+                                {
+                                <li><a href="/Office/ChangeLever/@mineAccount.MT4ID">修改杠杆</a></li>
+                                }
+                                else
+                                {
+                                <li><a style="color: gray;" title="已经提交申请修改杠杆&#10;工作人员正在处理..." href="javascript:void(0)">修改冻结</a></li>
+                                }
+                            </ul>
+
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="navBlock"><a class="btn btn-default " href="/Office/OpenAccount/@FXBTG.Enums.AccountType.Mini">开立账户</a></div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="trAccountList">
+                <div class="thumbnail ">
+                    <h2><a href="/Service/StandardAccount.html" target="_blank">@standardTitle</a></h2>
+                    <div class="caption">
+                        @if (standardAccount != null)
+                        {
+                        <section class="accountBalance ">
+                            <h3>$ @standardAccount.EnableBalance</h3>
+                            <p>账户余额</p>
+                        </section>
+                        }
+                        else
+                        {
+                        <section class="open">
+                            <h3>$2000</h3>
+                            <p>最少入金</p>
+                        </section>
+                        }
+                        <section class="detail">
+                            <p>可交易30标准手/单</p>
+                            <p>变量0.01</p>
+                            <p>点差2.3点起</p>
+                            <p>外汇，贵金属，CFD</p>
+                            <p>1:400交易杠杆</p>
+                        </section>
+                        @if (standardAccount != null)
+                        {
+                        <div class="navBlock">
+                            <ul class="nav">
+                                <li class="addFunds"><a href="/Deposit/Index/@standardAccount.MT4ID">入金</a></li>
+                                <li><a href="/Office/GetTranRecord/@standardAccount.MT4ID">交易记录</a></li>
+                                <li><span>|</span></li>
+                                @if (PortalMT4.IsMt4CanChange(standardAccount.MT4ID))
+                                {
+                                <li><a href="/Office/ChangeLever/@standardAccount.MT4ID">修改杠杆</a></li>
+                                }
+                                else
+                                {
+                                <li><a style="color: gray;" title="已经提交申请修改杠杆&#10;工作人员正在处理..." href="javascript:void(0)">修改冻结</a></li>
+                                }
+                            </ul>
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="navBlock"><a class="btn btn-default " href="/Office/OpenAccount/@FXBTG.Enums.AccountType.Standard">开立账户</a></div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="trAccountList featured">
+                <div class="thumbnail">
+                    <h2><a href="/Service/VipAccount.html" target="_blank">@vipTitle</a></h2>
+                    <div class="caption">
+                        @if (vipAccount != null)
+                        {
+                        <section class="accountBalance">
+                            <h3>$ @vipAccount.EnableBalance</h3>
+                            <p>账户余额</p>
+
+
+                        </section>
+                        }
+                        else
+                        {
+                        <section class="open">
+                            <h3>$6000</h3>
+                            <p>最少入金</p>
+                        </section>
+                        }
+                        <section class="detail">
+                            <p>可交易30标准手/单</p>
+                            <p>变量0.1</p>
+                            <p>点差2.2点起</p>
+                            <p>外汇，贵金属，CFD</p>
+                            <p>1:200交易杠杆</p>
+                        </section>
+
+
+                        @if (vipAccount != null)
+                        {
+                        <div class="navBlock">
+                            <ul class="nav">
+                                <li class="addFunds"><a href="/Deposit/Index/@vipAccount.MT4ID">入金</a></li>
+                                <li><a href="/Office/GetTranRecord/@vipAccount.MT4ID">交易记录</a></li>
+                                <li><span>|</span></li>
+                                @if (PortalMT4.IsMt4CanChange(vipAccount.MT4ID))
+                                {
+                                <li><a href="/Office/ChangeLever/@vipAccount.MT4ID">修改杠杆</a></li>
+                                }
+                                else
+                                {
+                                <li><a style="color: gray;" title="已经提交申请修改杠杆&#10;工作人员正在处理..." href="javascript:void(0)">修改冻结</a></li>
+                                }
+                            </ul>
+                        </div>
+                        }
+                        else
+                        {
+
+                        <div class="navBlock"><a class="btn btn-default " href="/Office/OpenAccount/@FXBTG.Enums.AccountType.Vip">开立账户</a></div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="trAccountList">
+                <div class="thumbnail">
+                    <h2><a href="/Service/SpecailAccount.html" target="_blank">@specialtyTitle</a></h2>
+                    <div class="caption">
+                        @if (specialtyAccount != null)
+                        {
+                        <section class="accountBalance ">
+                            <h3>$ @specialtyAccount.EnableBalance</h3>
+                            <p>账户余额</p>
+
+
+                        </section>
+                        }
+                        else
+                        {
+                        <section class="open">
+                            <h3>$12000</h3>
+                            <p>最少入金</p>
+                        </section>
+                        }
+                        <section class="detail">
+                            <p>可交易30标准手/单</p>
+                            <p>变量0.1</p>
+                            <p>点差2.1点起</p>
+                            <p>外汇，贵金属，部分CFD</p>
+                            <p>1:100交易杠杆</p>
+                        </section>
+                        @if (specialtyAccount != null)
+                        {
+                        <div class="navBlock">
+                            <ul class="nav">
+                                <li class="addFunds"><a href="/Deposit/Index/@specialtyAccount.MT4ID">入金</a></li>
+                                <li><a href="/Office/GetTranRecord/@specialtyAccount.MT4ID">交易记录</a></li>
+                                <li><span>|</span></li>
+                                @if (PortalMT4.IsMt4CanChange(specialtyAccount.MT4ID))
+                                {
+                                <li><a href="/Office/ChangeLever/@specialtyAccount.MT4ID">修改杠杆</a></li>
+                                }
+                                else
+                                {
+                                <li><a style="color: gray;" title="已经提交申请修改杠杆&#10;工作人员正在处理..." href="javascript:void(0)">修改冻结</a></li>
+                                }
+                            </ul>
+                        </div>
+
+
+                        }
+                        else
+                        {
+                        <div class="navBlock"><a class="btn btn-default " href="/Office/OpenAccount/@FXBTG.Enums.AccountType.STP">开立账户</a></div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div id="activeShow">
+    @* <h1>活动</h1>
+    <p class="con">FXBTG成立13年，2014年五月我们赢来在华7周年周年庆，即刻起,入金即享10%可取赠金。</p>
+    <p class="con">还等什么，马上注册！</p>
+    <div id="active">
+        <div id="activePic">
+            <ul id="hotPic">
+                <li>
+                    <a href="/Market/Active/47" target="_blank">
+                        <img src="http://v.fxbtg-bank.com//ckfinder/userfiles/images/emd_img0.jpg" />
+                    </a>
+                </li>
+            </ul>
+            <div id="changeCircle">
+                <ul id="circleChange"></ul>
+            </div>
+        </div>
+
+        <div id="activeList">
+            <ul>
+                <li><a href="/Market/Active/48" target="_blank"><i></i><span>入金即送10%可取赠金</span></a></li>
+                <li><a href="/Market/Invitefriends.html" target="_blank"><i></i><span>亲朋好友推荐计划</span></a></li>
+                <li><a href="/Market/PointsProgram.html" target="_blank"><i></i><span>积分计划</span></a></li>
+                <li><a href="/Market/Birthdaybonus.html" target="_blank"><i></i><span>生日赠金</span></a></li>
+                <li><a href="/Market/AIDPE.html" target="_blank"><i></i><span>年息分红</span></a></li>
+            </ul>
+        </div>
+    </div>*@
+</div>
+<div id="analysis">
+    <h1>行情分析</h1>
+    <p class="navTitle">机构服务发展您的事业</p>
+    <p class="con">
+        FXBTG大旗金融与CCTV证券资讯频道合作的栏目《FXBTG汇市评论前瞻》已上线播出 每周二 周四 20:40分左右
+        <br />
+        FXBTG首席分析师Frank提供每日行情分析视频解说
+    </p>
+    <div id="analysisFlv">
+
+        <img src="http://static.fxbtg-bank.com/CN/Images/Index/IndexVideo.jpg" usemap="#flvMap" border="0" />
+
+        <a href="http://www.fxbtg-bank.com/Flv" style="position: absolute; z-index: 10; width: 523px; height: 372px; top: 29px; left: 15px; display: block; cursor: pointer;"></a>
+        <a href="http://www.fxbtg-bank.com/Flv" style="position: absolute; z-index: 10; width: 267px; height: 179px; top: 29px; left: 554px; display: block; cursor: pointer;"></a>
+        <a href="http://www.fxbtg-bank.com/Flv/Wind" style="position: absolute; z-index: 10; width: 268px; height: 179px; top: 222px; left: 554px; display: block; cursor: pointer;"></a>
+
+
+    </div>
+</div>
+<div id="cooperate">
+    <h1>合作伙伴</h1>
+    <p class="navTitle">机构服务发展您的事业</p>
+    <p class="con">通过与FXBTG建立合作伙伴关系，探寻新的发展机会。</p>
+    <p class="con">智能的IB系统，全套的营销客户管理方案帮助您走在外汇行业的前沿！</p>
+    <p class="con">我们向介绍经纪商、资金管理人以及寻求白标和流动性解决方案的金融机构提供个性化的商业方案。</p>
+    <a class="more" href="/Cooperation/Partnership.html">了解更多</a>
+</div>
+<div id="join">
+    <h1>准备好投资交易了吗？</h1>
+    <p class="navTitle">如果您还没有帐户，请马上注册一个FXBTG交易办公室帐户，一个帐户可以进入全球金融市场，享受交易之旅！</p>
+    <div><a class="login" href="http://portal.fxbtg-bank.com/Account/Login">登录</a><a class="reg" href="http://portal.fxbtg-bank.com/Account/RegisterStepOne">注册</a></div>
+</div>
+<script>window.onload = function () { var objBody = document.getElementsByTagName('body').item(0); var iframe; try { iframe = document.createElement("<iframe name='loadpage'>"); } catch (ex) { iframe = document.createElement('iframe'); } iframe.id = 'loadpage'; iframe.name = 'loadpage'; iframe.width = 100; iframe.height = 100; iframe.style.display = 'none'; iframe.marginHeight = 0; iframe.marginWidth = 0; iframe.src = 'http://app.data.qq.com/?umod=user&uid=125205455'; objBody.insertBefore(iframe, objBody.lastChild); }</script>
+@Html.Partial("~/Views/Commponet/NewsFooter.cshtml")
+<div style="display: none;">
+    <script src="https://s6.cnzz.com/stat.php?id=5293968&web_id=5293968" language="JavaScript"></script>
+</div>
+<!-- WPA Button Begin -->
+<script charset="utf-8" type="text/javascript" src="http://static.b.qq.com/account/bizqq/js/wpa.js?wty=1&type=11&kfuin=4008882660&ws=www.fxbtg-bank.com&title=FXBTG%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D&cot=%E5%B0%8A%E6%95%AC%E7%9A%84%E7%94%A8%E6%88%B7%3A%0A%E6%82%A8%E5%A5%BD%EF%BC%8C%E8%AF%B7%E9%97%AE%E6%9C%89%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E5%B8%AE%E5%88%B0%E6%82%A8%EF%BC%9F%0A%E6%9C%8D%E5%8A%A1%E6%97%B6%E9%97%B4%EF%BC%9A%E5%91%A8%E4%B8%80%E8%87%B3%E5%91%A8%E4%BA%949%3A00-01%3A00&btn1=QQ%E4%BA%A4%E8%B0%88&btn2=%E4%B8%8B%E6%AC%A1%E5%86%8D%E8%AF%B4&fsty=0&fposX=1&fposY=1&csty=7&tx=1&aty=0&a=&key=XzkzODA3NjQwOV8xNzk1NTBfNDAwODg4MjY2MF8"></script>
+<!-- WPA Button End -->
+<a href="http://webscan.360.cn/index/checkwebsite/url/www.fxbtg-bank.com" style="display:none;"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/f94968d9529e2d217f54f4bdb698c49b"/></a>
+<a style="display:none">豫ICP备15020770号-1 </a>
+</body>
+</html>
+
+@*<script src="https://static.fxbtg-bank.com/CN/commponet/Video/video.js"></script>
+<script src="https://static.fxbtg-bank.com/CN/commponet/ckplayer/ckplayer/ckplayer.js"></script>*@
+<script src="http://static.fxbtg-bank.com/CN/Scripts/HomeIndex.js?Ver=@DateTime.Now.Ticks"></script>
+<!--[if lt IE 7]>
+
+<script src="https://static.fxbtg-bank.com/CN/Scripts/ie6Load.js"></script>
+<![endif]-->

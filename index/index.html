@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script type="text/javascript" charset="UTF-8" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .div-inline{
+            display:inline-block;
+        }
+        #num span{
+            padding:10px 13px;
+            border-radius: 30px;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border:1px solid #ff6200;
+            cursor:pointer;
+        }
+        .bg{
+            background:#ff6200;
+        }
+    </style>
+</head>
+<body>
+<div id="divv" style="text-align: center; width:1080px;margin:25px auto;background:#cccccc;border:1px dotted #666;height:324px;">
+    <div class="div-inline">
+        <a href="#">
+            <img src="1.jpg">
+        </a>
+    </div>
+    <div class="div-inline" style="display: none">
+        <a href="#">
+            <img src="2.jpg">
+        </a>
+    </div>
+    <div class="div-inline" style="display: none">
+        <a href="#">
+            <img src="3.jpg">
+        </a>
+    </div>
+    <div class="div-inline" style="display: none">
+        <a href="#">
+            <img src="4.jpg">
+        </a>
+    </div>
+    <div class="div-inline" style="display: none">
+        <a href="#">
+            <img src="5.jpg">
+        </a>
+    </div>
+    <div class="div-inline" style="display: none">
+        <a href="#">
+            <img src="6.jpg">
+        </a>
+    </div>
+    <div class="div-inline" style="display: none">
+        <a href="#">
+            <img src="7.jpg">
+        </a>
+    </div>
+</div>
+
+
+</body>
+</html>
+<script>
+    var i = 0,LengTh = $(".div-inline").length;
+    var INterval = setInterval(function(){
+        lunbo(i);
+        i++;
+        if(i == LengTh){
+            i = 0;
+        }
+    },1000);
+    function lunbo(i){
+
+            $(".div-inline").eq(i).show();
+            $(".div-inline").eq(i).siblings().hide();
+    }
+</script>
+
+<!--
+<div id="alertBlock">
+    <div class="alert-success alert alertBtn fade in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>复制成功</strong>
+        链接已复制到剪切板！
+    </div>
+</div>-->

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0
+        }
+        li{
+            list-style: none;
+        }
+
+        .fl{
+            float: left;
+        }
+        .fr{
+            float: right;
+        }
+        .box-header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 20;
+            background: #fff;
+            min-width: 320px;
+            height: auto;
+        }
+        .box-header-in {
+            padding: 12px 10px;
+            border: 0;
+            height: 42px;
+            width: auto;
+            z-index: 3;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .box-header-in h1{
+            margin:0
+        }
+        .clearfix {
+            zoom: 1;
+        }
+       .box-header-in .header-logo {
+           background-size: auto 366px;
+           margin-top: 0;
+           height: 45px;
+           width: 105px;
+           display: block;
+           float: left;
+           background: url("/Content/img/qq.png") no-repeat;
+           background-position: -88px -4px;
+        }
+        .h-rlist .hr-icon2 {
+            width: 28px;
+            height: 28px;
+            padding: 4px 4px 5px 5px;
+            background-size: 150px auto;
+            display: block;
+            background: url("/Content/img/qq.png") no-repeat;
+            background-position: -34px -8px;
+        }
+        .h-rlist .hr-icon4 {
+            width: 28px;
+            height: 28px;
+            padding: 6px 7px;
+            background-size: 150px auto;
+            display: block;
+            background: url("/Content/img/qq.png") 2px -2px no-repeat;
+        }
+        .h-rlist li {
+            float: left;
+            margin-left: 7px;
+            height: 38px;
+            width: 38px;
+            background: #ff6200;
+            border-radius: 4px;
+        }
+        .h-rlist{
+            display: block;
+            margin: 0;
+        }
+       .clear {
+           clear: both;
+       }
+        .open_box2 {
+            background: #fff;
+        }
+        .act_footer {
+            padding-bottom: 60px;
+        }
+        .act_footer {
+            width: 100%;
+            /*border-top: 1px solid #e9e9e9;*/
+            padding: 30px 0 50px 0;
+            background: #fff;
+        }
+        .act_footer .page_w {
+            padding: 0;
+            margin: 0;
+            width: auto;
+        }
+        .gwcoon2 {
+            margin-bottom: 30px;
+        }
+        .gwcoon2 {
+            padding: 0 0 14px 0;
+               border-bottom: 1px solid #e9e9e9;
+            margin: 0 0 25px 0;
+        }
+        .group_bus2 {
+            width: auto;
+            height: auto;
+        }
+        .group_bus2 {
+            margin: 0 auto;
+        }
+        .group_bus2 dt {
+            float: none;
+            margin: 0 auto;
+            width: 104px;
+            height: 57px;
+            background-size: 153px auto;
+            background-position: 0 -390px;
+            margin-bottom: 15px;
+        }
+        .group_bus2 dt {
+            background: url(/Content/img/qq.png) -88px 0 no-repeat;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+        .group_bus2 dd {
+            text-align: center;
+            font-size: 14px;
+            line-height: 30px;
+            font-family: "Microsoft YaHei";
+            color: rgb( 34, 34, 34 );;
+        }
+        .group_bus2 .blank {
+            padding: 0 5px;
+        }
+        .group_bus2 .blank {
+            color: #d0d0d0;
+        }
+        .gwcoon2 li.c1 {
+            width: 28%;
+            border-right: 1px solid #e9e9e9;
+            height:50px;
+            float: left;
+        }
+        .gwcoon2 li.c2 {
+            width: 44%;
+            margin: 0;
+            height: 50px;
+            border-right: 1px solid #e9e9e9;
+        }
+        .gwcoon2 li.c3 {
+            width: 27%;
+            float: right;
+            height: 50px;
+        }
+        .gwcoon2 li.c1 i, .gwcoon2 li.c2 i, .gwcoon2 li.c3 i {
+            margin: 0 auto;
+        }
+        .gwcoon2 li.c1 i {
+            width: 99px;
+            background-position: -28px 0;
+        }
+        .gwcoon2 li.c2 i {
+            width: 159px;
+            background-position: -158px 0;
+        }
+        .gwcoon2 li.c3 i {
+            width: 68px;
+            background-position: -356px -0px
+        }
+        .gwcoon2 li i {
+            display: block;
+            height: 55px;
+            background-image: url(/Content/img/tu4.png);
+            background-repeat: no-repeat;
+        }
+            .gwcoon2 li.c1 span, .gwcoon2 li.c2 span, .gwcoon2 li.c3 span {
+                padding: 0;
+            }
+                .gwcoon2 li.c1 span {
+                    line-height: 20px;
+                }
+                    .gwcoon2 li span {
+                        float: none;
+                        text-align: center;
+                        font-size: 12px;
+                        line-height: 40px;
+                        color: #585858;
+                    }
+        .gwcoon2 li.c1 b {
+            display: block;
+        }
+        .gwcoon2 li.c1 b {
+            font-weight: normal;
+        }
+        .fob_open {
+            display: block;
+            position: fixed;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 41px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.8);
+            border-top: 1px solid #000;
+        }
+        .fob_open a {
+            display: block;
+            float: left;
+            width: 33%;
+            margin: 0;
+            height: 40px;
+            line-height: 40px;
+            color: #EFFCFF;
+            text-indent: 35px;
+            font-size: 13px;
+            text-shadow: 0 0 2px #8C9197;
+            position: relative;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+        }
+        .fob_open .fb_open_analog {
+            width: 34%;
+        }
+
+            .fob_open a:before {
+                position: absolute;
+                left: 50%;
+                margin-left: -52px;
+                background: url(/Content/img/fo_open.png) no-repeat 0 4px;
+                background-size: 36px auto;
+                content: " ";
+                width: 36px;
+                height: 40px;
+            }
+        .redbag a:before {
+            background-image: url(/Content/img/fo_open2.png);
+        }
+        .fob_open .fb_open_analog:before {
+            background-position: 0 -47px;
+        }
+        .fob_open .qq-fon {
+            position: absolute;
+            left: 50%;
+            margin-left: -42px;
+            top: 7px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: url(/Content/img/fo_open.png) no-repeat center -103px;
+            background-size: 36px auto;
+        }
+        .fob_open .fb_consult:before {
+            background: none;
+            margin-left: -45px;
+        }
+        .act_copyright {
+            font-size: 12px;
+            padding: 0 10px;
+            padding-top: 20px;
+        }
+        .act_copyright {
+            text-align: center;
+            color: rgb( 153, 153, 153 );
+
+            line-height: 24px;
+            font-family: '微軟正黑體','\5FAE\8F6F\96C5\9ED1','\5B8B\4F53';
+        }
+        .btn{
+            font-family: "Microsoft YaHei";
+            color: rgb( 255, 255, 255 );
+            width: 45%;
+            height: 40px;
+            display: inline-block;
+            line-height: 40px;
+        }
+        .btn_div{
+            padding:0 16px;
+            text-align: center;
+            margin-top: 35px;
+            margin-bottom: 80px;
+        }
+    </style>
+</head>
+<body>
+<div class="box-header">
+    <div class="box-header-in clearfix">
+        <h1 class="fl">
+            <a class="header-logo hide-t" target="_blank" href="/default/regist"></a>
+        </h1>
+        <ul class="h-rlist fr">
+            <li><a href="tel:4008882660" class="hr-icon2 hide-t"></a></li>
+            <li><a href="tel:4008882660" class="hr-icon4 hide-t" id="minNav2"></a></li>
+        </ul>
+    </div>
+</div>
+<div  style="min-width: 320px;max-width: 540px;margin: auto">
+    <div style="margin-top:66px;text-align: center">
+        <a href="/default/regist">
+            <img style="max-width: 540px;width: 100%" src="/Content/img/datu.jpg">
+        </a>
+    </div>
+
+    <div class="open_box2">
+        <img src="/Content/img/tu2.png" width="100%">
+    </div>
+
+    <div class="btn_div">
+        <a class="btn" href="/default/regist" style="background:#ff6200;float:left;">开立真实账户</a>
+        <a class="btn" href="/default/regist"style="background:#3595d5;float:right;">开立模拟账户</a>
+        <div class="clear"></div>
+    </div>
+    <div style="margin-top:30px;text-align: center">
+        <a href="#">
+            <img style="max-width: 540px;width: 100%" src="/Content/img/datu4.jpg">
+        </a>
+    </div>
+    <div class="act_footer">
+        <div class="page_w">
+            <ul class="gwcoon2 clearfix">
+                <li class="c1"><i></i></li>
+                <li class="c2" style="float: left"><i></i></li>
+                <li class="c3"><i></i></li>
+                <div class="clear"></div>
+            </ul>
+            <dl class="group_bus2 clearfix">
+                <dt><a target="_blank"></a></dt>
+                <dd style="margin:0">贵金属业务<span class="blank">|</span>证券投资<span class="blank">|</span>期货业务<span class="blank">|</span>资产管理<span class="blank">|</span>外汇业务</dd>
+            </dl>
+            <p class="act_copyright">pyright@2002-2015 FXBTG Global 版权所有 ，不得转载。
+                </br>隐私声明 | 风险提示</p>
+        </div>
+    </div>
+</div>
+
+<section class="dn fob_open redbag">
+    <nav>
+        <a class="fb_open_real"  href="/default/regist">立即开户</a>
+        <a class="fb_open_analog" >无风险模拟</a><a onclick="openQQChat();_gaq.push(['_trackEvent', $GA_NAME, 'firm_live', 'qq',1,true]);" class="fb_consult" style="background-image:none"><i class="qq-fon"></i>立即咨询</a></nav>
+</section>
+</body>
+</html>

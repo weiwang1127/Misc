@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SWFObject 2 dynamic publishing example page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script type="text/javascript" src="swfobject.js"></script>
+    <script type="text/javascript">
+        swfobject.embedSWF("test.swf", "myContent", "300", "120", "9.0.0", "expressInstall.swf");
+    </script>
+</head>
+<body>
+<div id="myContent">
+    <h1>Alternative content</h1>
+    <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
+                                                             　　　　　　　　　　　　alt="Get Adobe Flash player" /></a></p>
+</div>
+</body>
+</html>
+
+
+
+$("#list0 .first").append
+('<li class="quote" style="color:#fff;width:550px">' + '
+    <span class="market" style="font-family:myFont;color:#fff;width:90px;font-size:20px;">'
+        + data[i].Currency +
+        '</span>' +
+    '<div class="ticker-digits " style="width:215px;color: #009045; background:url(http://static.fxbtg-bank.com/CN/Images/Index/quoteBg.png) 180px 8px no-repeat;">'
+        +
+        '<span style="font-family:myFont;color:#fff;font-size:20px">'
+            + data[i].buy +
+            '</span>' + ' / ' + '
+        <span style="font-family:myFont;color:#fff;font-size:20px;">'
+            + data[i].sell +
+            '</span>' + '
+    </div>' + '
+    <div class="change" style="width:100px;">'
+        + '<span class="hl-digits " style="font-family:myFont;color:#fff;font-size:20px;">'
+            + data[i].MaxValue +
+            '</span>' + '</div>' +
+    '<div class="change" style="width:100px;">' +
+        '<span class="hl-digits" style="font-family:myFont;color:#fff;font-size:20px;">'
+            + data[i].MinValue +
+            ' </span>' +
+        '</div>' +
+    '</li>');

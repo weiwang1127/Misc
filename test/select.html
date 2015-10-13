@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <title></title>
+</head>
+<body>
+    &lt;!&ndash;<input id="input" type="hidden" style="width:100%">&ndash;&gt;
+    <select multiple="" name="selectsq" id="selectsq" style="width:300px" class="populate select2-offscreen" tabindex="-1">
+    &lt;!&ndash;<select id="select">
+        <option></option>
+        <optgroup label="河南">
+            <option>郑州</option>
+            <option>洛阳</option>
+            <option>开封</option>
+            <option>周口</option>
+            <option>新郑</option>
+        </optgroup>
+    </select>&ndash;&gt;
+</body>
+</html>
+<script>
+
+ /*   $(function () {
+        $("#input").select2({
+            language: "zh-CN",
+            tags: function () {
+                $.ajax({
+                    //data:["sfs","sdfs","1231","sfs"],
+                    type: "get",
+                    url: "js/data.txt",
+                    success: function (result) {
+                        return JSON.parse(result).Data;
+                    }
+                });
+            },
+            multiple: true,
+            allowClear: true
+        });
+    });*/
+ $("#selectsq").select2();
+ $("#selectsq").on("change", function (e) { ToggleProductList();})
+
+
+
+ function Getselect2ID(idd) {
+     var data = $("#" + idd).select2("data");
+     var datastring = "";
+     $.each(data, function (key, val) {
+         datastring = datastring + val.id + ",";
+     });
+     return datastring;
+ }
+ function ToggleProductList() {
+     var sqlist = Getselect2ID("selectsq");
+     if (sqlist.length > 0) {
+         $("#divselectProduct").show();
+
+     }
+     else {
+         $("#divselectProduct").hide();
+     }
+ }
+
+
+ function GetCityData() {
+     var cityId = GetCity();
+     $.ajax({
+         type: "post",
+         dataType: 'json',
+         url: ajaxUrl,
+         data: {
+             Operate: "searchcitydata",
+             txtsqname: $("#txtsqname").val(),
+             txtspname: $("#txtspname").val(),
+             txtsjname: $("#txtsjname").val(),
+             CityId: cityId
+         },
+         success: function (data, textStatus) {
+             if (data != null) {
+                 var model = eval(data);
+                 if (model != null && model != "undefined") {
+                     //selectsq
+                     var html = '';
+                     $.each(model.ListSQ, function (key, val) {
+
+                         html = html + '    <option value="' + val.Id + '">' + val.Name + '</option>';
+                     });
+                     $("#selectsq").append(html);
+                 }
+                 else {
+                     alert("加载数据失败！"); return;
+                 }
+             }
+         },
+         complete: function (XMLHttpRequest, textStatus) {
+         },
+         error: function (e) {
+             alert("加载数据错误！"); return;
+         }
+     });
+ }
+</script>-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+</head>
+<body>
+<div id="body">
+    <table class="table table-bordered table-striped" width="800" border="none" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <td align="right">多选标签——火影忍者：</td>
+            <td>
+                <select class="combox" id="sel_productTag" name="tagId" multiple>
+                    <optgroup label="小辈儿组">
+                        <option value="kakaxi">卡卡西</option>
+                        <option value="mingren">鸣人</option>
+                        <option value="zuozhu">佐助</option>
+                        <option value="xiaoying">小樱</option>
+                    </optgroup>
+                    <optgroup label="大辈儿组">
+                        <option value="bofengshuimen">波风水门</option>
+                        <option value="dashewan">大蛇丸</option>
+                        <option value="gangshou">纲手</option>
+                        <option value="自来也">自来也</option>
+                    </optgroup>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">单选标签——火影忍者：</td>
+            <td>
+                <select class="combox" id="sel_recommender" name="recommenderId">
+                    <option value="">请选择...</option>
+                    <optgroup label="小辈儿组">
+                        <option value="kakaxi">卡卡西</option>
+                        <option value="mingren">鸣人</option>
+                        <option value="zuozhu">佐助</option>
+                        <option value="xiaoying">小樱</option>
+                    </optgroup>
+                    <optgroup label="大辈儿组">
+                        <option value="bofengshuimen">波风水门</option>
+                        <option value="dashewan">大蛇丸</option>
+                        <option value="gangshou">纲手</option>
+                        <option value="自来也">自来也</option>
+                    </optgroup>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('#sel_productTag').select2({
+            placeholder: "请至少选择一个人名",
+            tags:true,
+            createTag:function (decorated, params) {
+                return null;
+            },
+            width:'256px'
+        });
+        function formatState (state) {
+            if (!state.id) { return state.text; }
+            var $state = $(
+                    '<span>' + state.text + '</span>'
+            );
+            return $state;
+        };
+        $('#sel_recommender').select2({
+            placeholder: "请选择一个人名",
+            templateResult: formatState,
+            width:'256px'
+        });
+    });
+</script>
+</body>
+</html>

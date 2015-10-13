@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .zhuce{
+            font-family: "SimHei","Microsoft YaHei", Microsoft YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .zhuce .clear{
+            clear: both;
+        }
+        .zhuce p{
+            margin:10px 0;
+            font-size: 1rem;
+            color: rgb( 68, 68, 68 )}
+        .zhuce ._p{
+            font-size: 1.2rem;
+            color: rgb( 214, 0, 0 );
+            margin: 15px 0
+        }
+        .zhuce .h3,.h5{
+            color: rgb( 0, 0, 0 )
+        }
+        .zhuce .h3{
+            font-size: 1.3rem;
+        }
+        .zhuce .h5{
+            font-size:1.1rem;
+        }
+        .zhuce .a_btn{
+            width: 65%;
+            font-size: 1rem;
+            display: inline-block;
+            padding: 12px 40px;
+            background: rgb(255,98,0);
+            color: #fff;
+            margin: 15px 0;
+            text-align: center;
+
+        }
+        .zhuce .bd_b{
+            border-bottom:2px solid rgb(226,226,226)
+        }
+        .zhuce .Step{
+            padding: 0 10px 15px 10px;
+        }
+        .zhuce .tubiao{
+            float: left;
+            display:inline-block;
+            width: 10%;
+            margin-right: 12px;
+        }
+        .zhuce .tishi{
+            font-size: 1.2rem;
+            color: rgb( 153, 153, 153 );
+            margin-left: 10%;
+        }
+        .zhuce .next{
+            font-size: 1.2rem;
+            color: rgb( 0, 0, 0 );
+            margin-top: 15px;
+            padding-left:6px;
+        }
+
+        .zhuce .hongxian1{
+            float:left;
+            background:rgb( 214, 0, 0 );
+            width:3px;
+           /* height: 220px;*/
+        }
+        @media screen and  (max-width:321px){
+            .hongxian1{
+                height:220px;
+            }
+        }
+        @media screen and  (min-width:320px){
+            .hongxian1{
+                height:175px;
+            }
+        }
+        .zhuce .hongxian2{
+            float:left;
+            background:rgb( 214, 0, 0 );
+            width:3px;
+            height: 145px;
+
+        }
+
+        @media screen and (min-width:406px){
+            .gongxi{
+                line-height: 49px;
+            }
+        }
+        .zhuce .gongxi{
+            font-size: 1.5rem;
+            color: rgb( 33, 177, 0 );
+        }
+    </style>
+</head>
+<body class="zhuce">
+<div class="Success_content">
+    <div class="Success_1" style=" padding-left: 5px;">
+        <div>
+           <img class="tubiao" src="img/success.png">
+            <p class="gongxi">恭喜您成功注册FXBTG金融交易账户</p>
+            <div class="clear"></div>
+        </div>
+        <div class="bd_b" style="text-align: left;padding:0 12px;">
+            <p class="tishi">您已成功注册了真实账户，我们为您的真实账户注入了100美金的体验赠金，您可以无风险地使用此账户进行练习并测试您的交易技术。</p>
+        </div>
+    </div>
+    <div class="Success_2">
+        <p class="next">下一步怎么做？</p>
+        <div class="bd_b Step">
+            <p class="_p">步骤1</p>
+            <div>
+                <div class="hongxian1">
+                </div>
+                <div style="margin-left:15px;">
+                    <p>下载FXBTG MT4交易平台</p>
+                    <p>FXBTG MT4交易平台有可供PC机和MAC电</p>
+                    <p>脑使用的版本。同时还有一系列可供不</p>
+                    <p>同智能手机和平板电脑使用的版本。</p>
+                    <a class="a_btn">下载FXBTG交易软件</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="Step">
+            <p class="_p">步骤2</p>
+            <div>
+                <div class="hongxian2">
+                </div>
+                <div style="margin-left:15px;">
+                    <label class="h3">选择您适合的交易平台登录</label>
+                    <p>使用以下登录信息可登录任意一种交易平台的模拟账户</p>
+                    <p class="h5">账号：<span>788445</span></p>
+                    <p class="h5">密码：<span>458555555</span></p>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <footer style="text-align: center">
+            <a style="" class="a_btn">进入交易办公室</a>
+        </footer>
+        <a style="text-align:center;
+        padding:20px 25px;
+        line-height:60px;
+        background: url(img/Dicon.png) no-repeat left 12px  rgb(255,98,0);" href="#">afsdfad</a>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+@{
+ViewBag.Title = "软件下载";
+Layout = "~/Views/Shared/newsLayout.cshtml";
+}
+<link href="~/Content/css/News/Download.css?Ver=@DateTime.Now.Ticks" rel="stylesheet" />
+
+<style type="text/css">
+    .mydiv {
+        text-align: center;
+        line-height: 40px;
+        font-size: 12px;
+        font-weight: bold;
+        z-index:999;
+        width: 300px;
+        height: 120px;
+        left:50%;
+        top:50%;
+        color:#ffffff;
+        margin-left:-150px!important;/*FF IE7 该值为本身宽的一半 */
+        margin-top:-60px!important;/*FF IE7 该值为本身高的一半*/
+        margin-top:0px;
+        position:fixed!important;/* FF IE7*/
+        position:absolute;/*IE6*/
+        _top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+
+    }
+    .mydiv p {
+        color:#ffffff;
+    }
+    .bg{
+        background-color: #000; display:none;
+        width: 100%;
+        height: 100%;
+        left:0;
+        top:0;/*FF IE7*/
+        filter:alpha(opacity=0.5);/*IE*/
+        opacity:0.5;/*FF*/
+        z-index:1;
+        position:fixed!important;/*FF IE7*/
+        position:absolute;/*IE6*/
+        _top:       expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+            document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/* www.codefans.net IE5 IE5.5*/
+    }
+</style>
+
+<header class="bar bar-nav orangeNav">
+    <a class="icon icon-list pull-left"  href="/office/index"></a>
+    <h1 class="title">软件下载</h1>
+    <a class="icon icon-left-nav pull-right"  href="javascript:void(0)"><img style="margin-top:14px;" src="/content/component/return.png"></a>
+</header>
+<div class="content" id="wrapper" style="top:60px;">
+    <ul class="table-view download">
+        <li class="table-view-cell media IPHONE" style="display:none;">
+            <div class="navigate-right"  data-transition="slide-in">
+                <div class="media-object pull-left downloadIcon"></div>
+                <div class="media-body">
+                    FXBTG IPHONE TRADER
+                    <p>适用于IPHONE手机</p>
+                    <p>500万下载</p>
+                    <a class="btn btn-negative" href="https://itunes.apple.com/us/app/metatrader-4/id496212596">立即下载</a>
+                </div>
+            </div>
+        </li>
+        <li class="table-view-cell media android"  id="anddd" style="display:none;">
+            <div class="navigate-right"  data-transition="slide-in">
+                <div class="media-object pull-left downloadIcon"></div>
+                <div class="media-body">
+                    FXBTG Android TRADER
+                    <p>适用于Android手机</p>
+                    <p>500万下载</p><br />
+                    @*<a class="btn btn-negative" href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader4">立即下载</a>*@
+                    <a class="btn btn-negative" target="_self" href="http://m.fxbtg-bank.com/mt4.apk">立即下载</a>
+                </div>
+            </div>
+        </li>
+        <li class="table-view-cell media mobile" style="display:none;">
+            <div class="navigate-right" data-transition="slide-in">
+                <div class="media-object pull-left downloadIcon"></div>
+                <div class="media-body">
+                    FXBTG windows mobile TRADER
+                    <p>适用于windows mobile手机</p>
+                    <p>500万下载</p><br />
+                    <a class="btn btn-negative" href="http://v.fxbtg-bank.com/Content/clientdown/FXBTG-MT4-Mobile.cab">立即下载</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div id="popDiv" class="mydiv" style="display:none;">
+        <a href="javascript:closeDiv()">
+            <p>在微信中无法直接下载，请点击微信里右上角按钮，选择“在浏览器中打开”，再点立即下载即可。</p></a>
+    </div>
+
+    <div id="bg" class="bg" style="display:none;"></div>
+    <section class="downloadBg"> </section>
+
+    <script>
+        function showDiv() {
+            document.getElementById('popDiv').style.display = 'block';
+            document.getElementById('bg').style.display = 'block';
+            return true;
+        }
+        function closeDiv() {
+            document.getElementById('popDiv').style.display = 'none';
+            document.getElementById('bg').style.display = 'none';
+            return true;
+        }
+
+        window.onload = function () {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                showDiv();
+            } else {
+                closeDiv();
+            }
+        }
+
+    </script>
+
+</div>
+
+<script>
+    $(function () {
+        function browserRedirect() {
+
+            var sUserAgent = navigator.userAgent.toLowerCase();
+
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+
+
+            if (bIsIphoneOs) {
+
+                $('.IPHONE').show();
+
+
+            } else if (bIsAndroid) {
+                $('.android').show();
+
+            } else if (bIsWM) {
+                $('.mobile').show();
+
+            }
+
+        }
+        browserRedirect();
+        // window.addEventListener("DOMContentLoaded", loaded, false);
+    })
+
+
+
+</script>
+
+
